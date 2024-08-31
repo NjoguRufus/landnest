@@ -11,14 +11,14 @@ const TitleDeedsPage = () => (
       <li>Legal consultation on property rights</li>
       <li>Title insurance</li>
     </ul>
-    <link> https://wa.me/c/254720259827 </link>
     <Button 
-      variant="primary" 
-      size="medium"
-      whatsapp="Hi, I'm interested in your title deed services. Can you provide more information?"
-    >
-      Request Title Deed Service
-    </Button>
+  variant="primary" 
+  size="medium"
+  onClick={() => window.open('https://wa.me/c/254720259827?text=Hi,%20I%27m%20interested%20in%20your%20title%20deed%20services.%20Can%20you%20provide%20more%20information?', '_blank')}
+>
+  Request Title Deed Service
+</Button>
+
   </div>
 );
 
