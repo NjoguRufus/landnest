@@ -6,7 +6,7 @@ import Button from '../components/Button'; // Import the Button component
 const PropertiesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [properties, setProperties] = useState([
-    // ... your properties data
+   
   ]);
 
   const filteredProperties = properties.filter(property =>
