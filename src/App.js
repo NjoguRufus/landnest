@@ -10,9 +10,12 @@ import Footer from './components/Footer';
 const App = () => {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-100">
+      {/* Wrapper with Flexbox and full height */}
+      <div className="flex flex-col min-h-screen bg-gray-100">
         <Navbar />
-        <main className="container mx-auto mt-8 p-4">
+        
+        {/* Main content with flex-grow to take available space */}
+        <main className="flex-grow container mx-auto mt-8 p-4">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/properties" element={<PropertiesPage />} />
@@ -20,6 +23,8 @@ const App = () => {
             <Route path="/land-division" element={<LandDivisionPage />} />
           </Routes>
         </main>
+        
+        {/* Footer remains at the bottom */}
         <Footer />
       </div>
     </Router>
