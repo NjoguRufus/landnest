@@ -11,12 +11,13 @@ const TitleDeedsPage = () => (
       <li>Legal consultation on property rights</li>
       <li>Title insurance</li>
     </ul>
+    <link> https://wa.me/c/254720259827 </link>
     <Button 
       variant="primary" 
       size="medium"
       whatsapp="Hi, I'm interested in your title deed services. Can you provide more information?"
     >
-      Request Title Deed Service 
+      Request Title Deed Service
     </Button>
   </div>
 );
