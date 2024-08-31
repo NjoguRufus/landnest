@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
-              <h1 className="text-white text-2xl font-bold">LandNest</h1>
+              <h1 className="text-white text-2xl font-bold">LandNest-Properties</h1>
             </Link>
           </div>
           <div className="hidden md:block">
