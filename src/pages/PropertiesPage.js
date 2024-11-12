@@ -86,7 +86,7 @@ const PropertiesPage = () => {
       price: '1,400,000',
       location: 'Mwea-Wanguru',
       description: 'Very ideal for commercial activities.',
-      images: ['/images/mwea-wanguru.jpg'],
+      images: ['/images/mwea-wanguru1.jpg','/images/mwea-wanguru2.jpg','/images/mwea-wanguru3.jpg'],
     },
     {
       id: 9,
@@ -94,7 +94,7 @@ const PropertiesPage = () => {
       price: '3,100,000',
       location: 'Mukithi',
       description: 'The property is 2.6km from Kagio Kutus tarmac. There is plenty of water for farming. Electricity is available, The area is well served with well Graded Road Network',
-      images: ['/images/mukithi.jpg'],
+      images: ['/images/mukithi1.jpg','/images/mukithi2.jpg','/images/mukithi3.jpg','/images/mukithi4.jpg','/images/mukithi5.jpg'],
     },
     {
       id: 10,
@@ -102,7 +102,7 @@ const PropertiesPage = () => {
       price: '700,000',
       location: 'Mwea-Ndindiruku',
       description: 'The plots are touching Mwea-Ndindiruku tarmac. Very ideal for commercial or residential purposes.The area is Well served with electricity and Water. The price is slightly Negotiable',
-      images: ['/images/mwea-ndindiruku.jpg'],
+      images: ['/images/mwea-ndindiruku1.jpg','/images/mwea-ndindiruku2.jpg','/images/mwea-ndindiruku3.jpg'],
     },
     {
       id: 11,
@@ -110,7 +110,7 @@ const PropertiesPage = () => {
       price: '3,200,000',
       location: 'Gitooni',
       description: 'The shamba is less than 100 meters from Kagio Tarmac.',
-      images: ['/images/gitooni.jpg'],
+      images: ['/images/gitooni5.jpg','/images/gitooni1.jpg','/images/gitooni2.jpg','/images/gitooni3.jpg','/images/gitooni4.jpg','/images/gitooni6.jpg','/images/gitooni7.jpg'],
     },
     ]);
  
