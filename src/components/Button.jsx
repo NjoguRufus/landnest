@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = ({ children, onClick, href, className = '', variant = 'primary', size = 'medium' }) => {
+const Button = ({ children, onClick, className = '', variant = 'primary', size = 'medium' }) => {
   const baseStyles = 'font-bold rounded-lg transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2';
   
   const variants = {
@@ -18,21 +18,7 @@ const Button = ({ children, onClick, href, className = '', variant = 'primary', 
 
   const buttonStyles = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
 
-  // Check if `href` is provided to render an <a> tag for external links
-  if (href) {
-    return (
-      <a 
-        href={href} 
-        className={buttonStyles} 
-        target="_blank" 
-        rel="noopener noreferrer"
-      >
-        {children}
-      </a>
-    );
-  }
-
-  // Render as a button if `href` is not provided
+  // Render button with the onClick function, only if no `href` is provided
   return (
     <button className={buttonStyles} onClick={onClick}>
       {children}
