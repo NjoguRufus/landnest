@@ -117,52 +117,58 @@ const PropertiesPage = () => {
     ]);
     
 
-  const filteredProperties = properties.filter(property =>
-    property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    property.location.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const handleInquire = (property) => {
-    const message = `Hi, I'm interested in the property: ${property.title}. Location: ${property.location}. Price: Ksh ${property.price}. Description: ${property.description}`;
-    const url = `https://wa.me/254720259827?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-  };
-
-  return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Available Properties</h2>
-      <div className="mb-4 relative">
-        <input
-          type="text"
-          placeholder="Search properties..."
-          className="w-full p-2 pl-10 border rounded"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <FaSearch className="absolute left-3 top-2.5 text-gray-400" size={20} />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredProperties.map(property => (
-          <PropertyCard 
-            key={property.id} 
-            property={{
-              ...property,
-              price: `Ksh ${property.price}`,
-            }}
-            actionButton={
-              <Button 
-                variant="primary" 
-                size="medium"
-                onClick={() => handleInquire(property)} // Call handleInquire to open WhatsApp
-              >
-                Inquire
-              </Button>
-            }
+    const filteredProperties = properties.filter(property =>
+      property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      property.location.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  
+    const handleInquire = (property) => {
+      const message = `
+        Hi LandNest, I'm interested in the property: ${property.title}.
+        Location: ${property.location}.
+        Price: Ksh ${property.price}.
+        Description: ${property.description}
+       
+      `;
+      const url = `https://wa.me/254720259827?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    };
+  
+    return (
+      <div>
+        <h2 className="text-2xl font-bold mb-4">Available Properties</h2>
+        <div className="mb-4 relative">
+          <input
+            type="text"
+            placeholder="Search properties..."
+            className="w-full p-2 pl-10 border rounded"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
-        ))}
+          <FaSearch className="absolute left-3 top-2.5 text-gray-400" size={20} />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredProperties.map(property => (
+            <PropertyCard 
+              key={property.id} 
+              property={{
+                ...property,
+                price: `Ksh ${property.price}`,
+              }}
+              actionButton={
+                <Button 
+                  variant="primary" 
+                  size="medium"
+                  onClick={() => handleInquire(property)} // Pass the property to the handler
+                >
+                  Inquire
+                </Button>
+              }
+            />
+          ))}
+        </div>
       </div>
-    </div>
-  );
-};
-
-export default PropertiesPage;
+    );
+  };
+  
+  export default PropertiesPage;
