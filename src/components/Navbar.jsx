@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import { Link } from 'react-router-dom';
 import { FaHome, FaMapMarkedAlt, FaFileAlt, FaCut, FaBars, FaTimes } from 'react-icons/fa';
 
@@ -17,7 +17,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0">
+            <Link to="/" className="flex items-center">
+              {/* Add the logo */}
+              <img 
+                src="/images/logo.jpg" 
+                alt="LandNest Logo" 
+                className="h-16 w-16 rounded-full mr-2"  // Adjusted size and roundness
+              />
               <h1 className="text-white text-2xl font-bold">LandNest-Properties</h1>
             </Link>
           </div>
