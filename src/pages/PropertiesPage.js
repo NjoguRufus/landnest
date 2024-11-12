@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import PropertyCard from '../components/PropertyCard';
@@ -7,7 +5,7 @@ import Button from '../components/Button';
 
 const PropertiesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [selectedImage, setSelectedImage] = useState(null);
   const [properties] = useState([
     // Properties data (same as before)
     {
@@ -115,60 +113,84 @@ const PropertiesPage = () => {
       images: ['/images/gitooni.jpg'],
     },
     ]);
+ 
+      const filteredProperties = properties.filter(property =>
+        property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        property.location.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     
-
-    const filteredProperties = properties.filter(property =>
-      property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      property.location.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  
-    const handleInquire = (property) => {
-      const message = `
-        Hi LandNest, I'm interested in the property: ${property.title}.
-        Location: ${property.location}.
-        Price: Ksh ${property.price}.
-        Description: ${property.description}
-       
-      `;
-      const url = `https://wa.me/254720259827?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
-    };
-  
-    return (
-      <div>
-        <h2 className="text-2xl font-bold mb-4">Available Properties</h2>
-        <div className="mb-4 relative">
-          <input
-            type="text"
-            placeholder="Search properties..."
-            className="w-full p-2 pl-10 border rounded"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <FaSearch className="absolute left-3 top-2.5 text-gray-400" size={20} />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredProperties.map(property => (
-            <PropertyCard 
-              key={property.id} 
-              property={{
-                ...property,
-                price: `Ksh ${property.price}`,
-              }}
-              actionButton={
-                <Button 
-                  variant="primary" 
-                  size="medium"
-                  onClick={() => handleInquire(property)} // Pass the property to the handler
-                >
-                  Inquire
-                </Button>
-              }
+      const handleInquire = (property) => {
+        const message = `
+          Hi LandNest, I'm interested in the property: ${property.title}.
+          Location: ${property.location}.
+          Price: Ksh ${property.price}.
+          Description: ${property.description}
+        `;
+        const url = `https://wa.me/254720259827?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+      };
+    
+      const handleImageClick = (image) => {
+        setSelectedImage(image); // Set the selected image when clicked
+      };
+    
+      const handleCloseModal = () => {
+        setSelectedImage(null); // Close the modal by setting the selected image to null
+      };
+    
+      return (
+        <div>
+          <h2 className="text-2xl font-bold mb-4">Available Properties</h2>
+          <div className="mb-4 relative">
+            <input
+              type="text"
+              placeholder="Search properties..."
+              className="w-full p-2 pl-10 border rounded"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
-          ))}
+            <FaSearch className="absolute left-3 top-2.5 text-gray-400" size={20} />
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredProperties.map(property => (
+              <PropertyCard 
+                key={property.id} 
+                property={{
+                  ...property,
+                  price: `Ksh ${property.price}`,
+                }}
+                actionButton={
+                  <Button 
+                    variant="primary" 
+                    size="medium"
+                    onClick={() => handleInquire(property)} // Pass the property to the handler
+                  >
+                    Inquire
+                  </Button>
+                }
+                onImageClick={handleImageClick} // Pass the handleImageClick function
+              />
+            ))}
+          </div>
+    
+          {/* Modal to display selected image */}
+          {selectedImage && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" onClick={handleCloseModal}>
+              <div className="relative">
+                <img src={selectedImage} alt="Selected Property" className="max-w-full max-h-full object-contain" />
+                <button 
+                  onClick={handleCloseModal} 
+                  className="absolute top-0 right-0 text-white text-3xl font-bold px-4 py-2"
+                >
+                  &times;
+                </button>
+              </div>
+            </div>
+          )}
         </div>
-      </div>
-    );
-  };
-  
-  export default PropertiesPage;
+      );
+    };
+    
+    export default PropertiesPage;
+    
