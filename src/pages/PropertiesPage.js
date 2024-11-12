@@ -1,3 +1,5 @@
+
+
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import PropertyCard from '../components/PropertyCard';
@@ -7,6 +9,7 @@ const PropertiesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const [properties] = useState([
+    // Properties data (same as before)
     {
       id: 1,
       title: '50 by 100 Plot Kimbimbi',
@@ -111,12 +114,19 @@ const PropertiesPage = () => {
       description: 'The shamba is less than 100 meters from Kagio Tarmac.',
       images: ['/images/gitooni.jpg'],
     },
-  ]);
+    ]);
+    
 
   const filteredProperties = properties.filter(property =>
     property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     property.location.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleInquire = (property) => {
+    const message = `Hi, I'm interested in the property: ${property.title}. Location: ${property.location}. Price: Ksh ${property.price}. Description: ${property.description}`;
+    const url = `https://wa.me/254720259827?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  };
 
   return (
     <div>
@@ -141,11 +151,11 @@ const PropertiesPage = () => {
             }}
             actionButton={
               <Button 
-                href={`https://wa.me/254720259827?text=Hi, I'm interested in the property: ${property.title}. Location: ${property.location}. Price: Ksh ${property.price}. Description: ${property.description}`}
                 variant="primary" 
                 size="medium"
+                onClick={() => handleInquire(property)} // Call handleInquire to open WhatsApp
               >
-                Inquire 
+                Inquire
               </Button>
             }
           />
