@@ -54,7 +54,7 @@ const PropertiesPage = () => {
       location: 'Kiamiciri',
       description: 'The shamba is exactly 1.9km from Kerugoya Kutus tarmac. Very fertile shamba with 1¼ acres under mature coffee and ¾ acres under rice plantation.',
       images: [
-        '/images/kiamiciri.jpg',
+        '/images/kiamiciri1.jpg',
         '/images/kiamiciri2.jpg',
         '/images/kiamiciri3.jpg',
         '/images/kiamiciri4.jpg',
